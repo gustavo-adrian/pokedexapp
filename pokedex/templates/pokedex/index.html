@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'pokedex/reset.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'pokedex/style.css' %}">
+        <title>Pokedex</title>
+    </head>
+    <body>
+        <h1>Pokedex</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="pokemon">
+            <input type="submit" value="Search">
+        </form>
+        {% if number %}
+        <p>Number: {{ number }}</p>
+        <p>Name: {{ name }}</p>
+        <p>Height: {{ height }}</p>
+        <p>Weight: {{ weight }}</p>
+        <img src="{{ sprite }}" alt="Pokemon sprite">
+        {% else %}
+        <h3>
+            Escribe el nombre o el número del Pokemón.
+        </h3>
+        {% endif %}
+    </body>
+</html>
